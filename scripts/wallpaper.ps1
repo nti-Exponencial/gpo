@@ -60,4 +60,7 @@ Set-ItemProperty "HKCU:\Control Panel\Desktop" TileWallpaper 0
 $panel.Controls.Add($pic)
 }
 
+$form.Add_FormClosing({
+    [System.Environment]::Exit(0)
+})
 $form.ShowDialog()
