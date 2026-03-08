@@ -14,6 +14,7 @@ Add-Type -AssemblyName System.Drawing
 
 $Scripts = @(
     @{ Name = "Lab. Informatica | Aluno(a)"; Url = "cataratas.github.io/Exponencial-GPO/scripts/lab.ps1" }
+    @{ Name = "Lab. Informatica | Professor(a)"; Url = "cataratas.github.io/Exponencial-GPO/scripts/lab2.ps1" }
     @{ Name = "Wallpapers"; Url = "cataratas.github.io/Exponencial-GPO/scripts/wallpaper.ps1" }
 )
 

@@ -1,5 +1,5 @@
 New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
-reg load HKU\TempHive "C:\Users\Aluno(a)\NTUSER.DAT"
+reg load HKU\TempHive "C:\Users\Professor(a)\NTUSER.DAT"
 
 # Browser History
 New-Item -Path "HKU:\TempHive\Software\Policies\Google\Chrome\AllowDeletingBrowserHistory" -Force | Out-Null
@@ -32,9 +32,9 @@ New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome\ClearBrows
     -Name "8" -PropertyType String -Value "hosted_app_data" -Force
 
 # Set Wallpaper
-Invoke-WebRequest "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_orange.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg"
+Invoke-WebRequest "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_blue.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_blue.jpeg"
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
-    -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg" -Force
+    -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_blue.jpeg" -Force
 
 # (2 = stretch, 0 = center, 6 = fit, 10 = fill)
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
