@@ -4,7 +4,7 @@ Add-Type -AssemblyName System.Drawing
 $Wallpapers = @(
     "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_orange.jpeg",
     "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_blue.jpeg",
-    "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_dark_gray.jpeg"
+    "https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_dark.jpeg"
 )
 
 $form = New-Object Windows.Forms.Form
