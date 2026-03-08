@@ -3,6 +3,7 @@ Add-Type -AssemblyName System.Drawing
 
 $Scripts = @(
     @{ Name = "Lab. Informática | Aluno(a)"; Url = "cataratas.github.io/GPO/scripts/lab.ps1" }
+    @{ Name = "Wallpapers"; Url = "cataratas.github.io/GPO/scripts/wallpaper.ps1" }
 )
 
 $form = New-Object System.Windows.Forms.Form
@@ -24,7 +25,6 @@ foreach ($script in $Scripts) {
     $button.Add_Click({
         try {
             irm $url | iex
-            [System.Windows.Forms.MessageBox]::Show("Script executed successfully")
         }
         catch {
             [System.Windows.Forms.MessageBox]::Show("Failed to run script")
