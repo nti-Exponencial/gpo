@@ -2,8 +2,8 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $Wallpapers = @(
-"https://cataratas.github.io/GPO/assets/wallpaper_orange.jpeg",
-"https://cataratas.github.io/GPO/assets/wallpaper_blue.jpeg"
+"https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_orange.jpeg",
+"https://cataratas.github.io/Exponencial-GPO/assets/wallpaper_blue.jpeg"
 )
 
 $form = New-Object Windows.Forms.Form
