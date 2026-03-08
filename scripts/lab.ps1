@@ -40,8 +40,12 @@ New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
     -Name "WallpaperStyle" -PropertyType String -Value "2" -Force
 
-# Delete history on exit
+# Delete data on exit (IE)
 New-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Internet Explorer\Control Panel" `
     -Name "AllowDeletingBrowserHistory" -Value 1 -Type DWord -Force
+
+# Delete data on exit (Edge)
+New-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Edge" `
+    -Name "AllowDeletingBrowserHistory" -PropertyType DWord -Value 1 -Force
 
 reg unload HKU\TempHive
