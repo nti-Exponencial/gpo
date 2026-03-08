@@ -56,6 +56,6 @@ foreach ($script in $Scripts) {
 }
 
 $form.Add_FormClosing({
-    [System.Environment]::Exit(0)
+    Stop-Process $PID
 })
 $form.ShowDialog()
