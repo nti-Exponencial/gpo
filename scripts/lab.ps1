@@ -56,3 +56,4 @@ New-ItemProperty -Path "HKCU:\Software\Policies\Microsoft\Edge" `
     -Name "AllowDeletingBrowserHistory" -PropertyType DWord -Value 1 -Force
 
 reg unload HKU\TempHive
+pause
