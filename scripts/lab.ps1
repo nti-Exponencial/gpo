@@ -1,10 +1,11 @@
 New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 
-$sid = (New-Object System.Security.Principal.NTAccount("Aluno(a)")).
-       Translate([System.Security.Principal.SecurityIdentifier]).Value
+$profile = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\*" |
+Where-Object { $_.ProfileImagePath -like "*Aluno(a)" }
 
-# Get profile path
-$profilePath = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$sid").ProfileImagePath
+$sid = $profile.PSChildName
+$profilePath = $profile.ProfileImagePath
+
 reg load HKU\TempHive "$profilePath\NTUSER.DAT"
 
 # Browser History
