@@ -9,7 +9,7 @@ $Wallpapers = @(
 
 $form = New-Object Windows.Forms.Form
 $form.Text = "Select Wallpaper"
-$form.Size = New-Object Drawing.Size(600,400)
+$form.Size = New-Object Drawing.Size(620,200)
 $form.StartPosition = "CenterScreen"
 
 $panel = New-Object Windows.Forms.FlowLayoutPanel
@@ -55,8 +55,4 @@ foreach ($url in $Wallpapers) {
     $panel.Controls.Add($pic)
 }
 
-$form.Add_FormClosing({
-    [System.Windows.Forms.Application]::Exit()
-})
-
-$form.ShowDialog()
+$form.ShowDialog() | Out-Null

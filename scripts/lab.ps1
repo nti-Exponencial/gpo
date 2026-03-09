@@ -7,18 +7,16 @@ if ($null -eq $profilePath) {
 }
 reg load HKU\TempHive "$profilePath\NTUSER.DAT"
 
+New-Item -Path "HKU:\TempHive\Software\Policies\Google\Chrome\" -Force | Out-Null
 # Browser History
-New-Item -Path "HKU:\TempHive\Software\Policies\Google\Chrome\AllowDeletingBrowserHistory" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome" `
     -Name "AllowDeletingBrowserHistory" -PropertyType DWord -Value 0 -Force
 
 # Guest mode
-New-Item -Path "HKU:\TempHive\Software\Policies\Google\Chrome\BrowserGuestModeEnabled" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome" `
     -Name "BrowserGuestModeEnabled" -PropertyType DWord -Value 0 -Force
 
 # Browser Signin
-New-Item -Path "HKU:\TempHive\Software\Policies\Google\Chrome\BrowserSignin" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome" `
     -Name "BrowserSignin" -PropertyType DWord -Value 0 -Force
 
@@ -38,21 +36,26 @@ New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome\ClearBrows
     -Name "8" -PropertyType String -Value "hosted_app_data" -Force
 
 # Set Wallpaper
-Invoke-WebRequest "https://nti-exponencial.github.io/gpo/assets/wallpaper_orange.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg"
+Invoke-WebRequest "https://nti-exponencial.github.io/gpo/assets/wallpaper_orange.jpg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_orange.jpg"
+New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
-    -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg" -Force
+    -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_orange.jpg" -Force
 
 # (2 = stretch, 0 = center, 6 = fit, 10 = fill)
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
     -Name "WallpaperStyle" -PropertyType String -Value "2" -Force
 
 # Delete data on exit (IE)
+New-Item -Path "HKU:\TempHive\Software\Policies\Microsoft\Internet Explorer\Control Panel" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Microsoft\Internet Explorer\Control Panel" `
     -Name "AllowDeletingBrowserHistory" -Value 1 -Type DWord -Force
 
 # Delete data on exit (Edge)
+New-Item -Path "HKU:\TempHive\Software\Policies\Microsoft\Edge" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Microsoft\Edge" `
     -Name "AllowDeletingBrowserHistory" -PropertyType DWord -Value 1 -Force
 
+[gc]::Collect()
+[gc]::WaitForPendingFinalizers()
 reg unload HKU\TempHive
 pause
