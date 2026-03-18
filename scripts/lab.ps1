@@ -1,5 +1,4 @@
-Invoke-WebRequest "https://nti-exponencial.github.io/gpo/scripts/selectUser.ps1" -OutFile "$env:TEMP/selectUser.ps1"
-. "$PSScriptRoot\selectUser.ps1"
+. (Join-Path $PSScriptRoot "/selectUser.ps1")
 New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 
 $profilePath = selectUser
@@ -41,7 +40,7 @@ New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome\ClearBrows
     -Name "8" -PropertyType String -Value "hosted_app_data" -Force
 
 # Set Wallpaper
-Invoke-WebRequest "https://nti-exponencial.github.io/gpo/assets/wallpaper_orange.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg"
+Copy-Item -Path "$PSScriptRoot\..\assets\wallpaper_orange.jpeg" -Destination "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg"
 New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
     -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_orange.jpeg" -Force
