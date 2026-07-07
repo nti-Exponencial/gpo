@@ -1,4 +1,4 @@
-Invoke-WebRequest "https://cataratas.github.io/gpo/scripts/selectUser.ps1" -OutFile "$env:TEMP/selectUser.ps1"
+Invoke-WebRequest "https://nti-exponencial.github.io/gpo/scripts/selectUser.ps1" -OutFile "$env:TEMP/selectUser.ps1"
 . "$PSScriptRoot\selectUser.ps1"
 New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 
@@ -46,7 +46,7 @@ New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome\ClearBrows
 New-ItemProperty -Path "HKU:\TempHive\Software\Policies\Google\Chrome\ClearBrowsingDataOnExitList" `
     -Name "8" -PropertyType String -Value "hosted_app_data" -Force
 
-Invoke-WebRequest "https://cataratas.github.io/gpo/assets/wallpaper_blue.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_blue.jpeg"
+Invoke-WebRequest "https://nti-exponencial.github.io/gpo/assets/wallpaper_blue.jpeg" -OutFile "C:\Windows\Web\Wallpaper\wallpaper_blue.jpeg"
 New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\System" `
     -Name "Wallpaper" -PropertyType String -Value "C:\Windows\Web\Wallpaper\wallpaper_blue.jpeg" -Force

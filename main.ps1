@@ -1,4 +1,4 @@
-$ScriptUrl = "https://cataratas.github.io/gpo/main.ps1"
+$ScriptUrl = "https://nti-exponencial.github.io/gpo/main.ps1"
 
 $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -13,9 +13,9 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $Scripts = @(
-    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "cataratas.github.io/gpo/scripts/lab.ps1" }
-    @{ Name = "Lab. Informatica | Professor(a)"; Url = "cataratas.github.io/gpo/scripts/lab2.ps1" }
-    @{ Name = "Wallpapers"; Url = "cataratas.github.io/gpo/scripts/wallpaper.ps1" }
+    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab.ps1" }
+    @{ Name = "Lab. Informatica | Professor(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab2.ps1" }
+    @{ Name = "Wallpapers"; Url = "nti-exponencial.github.io/gpo/scripts/wallpaper.ps1" }
 )
 
 $form = New-Object System.Windows.Forms.Form
