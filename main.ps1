@@ -15,6 +15,7 @@ Add-Type -AssemblyName System.Drawing
 $Scripts = @(
     @{ Name = "Lab. Informatica | Aluno(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab.ps1" }
     @{ Name = "Lab. Informatica | Professor(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab2.ps1" }
+    @{ Name = "Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/classroom.ps1" }
     @{ Name = "Wallpapers"; Url = "nti-exponencial.github.io/gpo/scripts/wallpaper.ps1" }
 )
 
