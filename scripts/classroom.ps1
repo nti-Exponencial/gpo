@@ -25,15 +25,6 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalizatio
 New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Force | Out-Null
 New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Name "NoChangingWallPaper" -PropertyType DWord -Value 1 -Force
 
-New-Item -Path "HKU:\TempHive\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
-New-ItemProperty -Path "HKU:\TempHive\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "SettingsPageVisibility" -PropertyType String -Value "hide:powersleep" -Force
-
-New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowCpl" -Force | Out-Null
-New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\DisallowCpl" -Name "1" -PropertyType String -Value "Microsoft.PowerOptions" -Force
-
-New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
-New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "DisallowCpl" -PropertyType DWord -Value 1 -Force
-
 powercfg /change monitor-timeout-ac 0
 powercfg /change monitor-timeout-dc 0
 
