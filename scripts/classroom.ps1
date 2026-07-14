@@ -23,7 +23,7 @@ New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Forc
 New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoChangingLockScreen" -PropertyType DWord -Value 1 -Force
 
 New-Item -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Force | Out-Null
-New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Name "NoChangingWallPaper" -PropertyType DWord -Value 0 -Force
+New-ItemProperty -Path "HKU:\TempHive\Software\Microsoft\Windows\CurrentVersion\Policies\ActiveDesktop" -Name "NoChangingWallPaper" -PropertyType DWord -Value 1 -Force
 
 powercfg /change monitor-timeout-ac 0
 powercfg /change monitor-timeout-dc 0
