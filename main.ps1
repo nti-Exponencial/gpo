@@ -11,6 +11,7 @@ $Scripts = @(
     @{ Name = "Lab. Informatica | Professor(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab2.ps1" }
     @{ Name = "Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/classroom.ps1" }
     @{ Name = "Wallpapers"; Url = "nti-exponencial.github.io/gpo/scripts/wallpaper.ps1" }
+    @{ Name = "Reverse Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/rev_classroom.ps1" }
 )
 
 $form = New-Object System.Windows.Forms.Form
