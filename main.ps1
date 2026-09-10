@@ -6,7 +6,7 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $Scripts = @(
-    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "$url/gpo/scripts/lab.ps1" }
+    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "$url/scripts/lab.ps1" }
     @{ Name = "Lab. Informatica | Professor(a)"; Url = "$url/scripts/lab2.ps1" }
     @{ Name = "Salas de Aula"; Url = "$url/scripts/classroom.ps1" }
     @{ Name = "Wallpapers"; Url = "$url/scripts/wallpaper.ps1" }
