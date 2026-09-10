@@ -1,4 +1,4 @@
-# $ScriptUrl = "https://nti-exponencial.github.io/gpo/main.ps1"
+$Url = "nti-exponencial.github.io/gpo/"
 
 # $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
@@ -11,21 +11,22 @@ $Scripts = @(
     @{ Name = "Lab. Informatica | Professor(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab2.ps1" }
     @{ Name = "Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/classroom.ps1" }
     @{ Name = "Wallpapers"; Url = "nti-exponencial.github.io/gpo/scripts/wallpaper.ps1" }
-    @{ Name = "Reverse Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/rev_classroom.ps1" }
+)
+$Rollbacks = @(
+    @{ Name = "Rollback | Salas de Aula"; Url = $Url + "/scripts/rollback/rev_classroom.ps1"}
 )
 
 $form = New-Object System.Windows.Forms.Form
 $form.Text = "Colegio Exponencial - GPO"
-$form.Size = New-Object System.Drawing.Size(400,300)
+$form.Size = New-Object System.Drawing.Size(620,320)
 $form.StartPosition = "CenterScreen"
 
 $y = 20
-
 foreach ($script in $Scripts) {
     $button = New-Object System.Windows.Forms.Button
     $button.Text = $script.Name
-    $button.Size = New-Object System.Drawing.Size(320,40)
-    $button.Location = New-Object System.Drawing.Point(30,$y)
+    $button.Size = New-Object System.Drawing.Size(250, 40)
+    $button.Location = New-Object System.Drawing.Point(30, $y)
 
     $button.Tag = $script.Url
 
@@ -46,7 +47,35 @@ foreach ($script in $Scripts) {
     })
 
     $form.Controls.Add($button)
+    $y += 50
+}
 
+$y = 20
+foreach ($script in $Rollbacks) {
+    $button = New-Object System.Windows.Forms.Button
+    $button.Text = $script.Name
+    $button.Size = New-Object System.Drawing.Size(250, 40)
+    $button.Location = New-Object System.Drawing.Point(300, $y)
+
+    $button.Tag = $script.Url
+
+    $button.Add_Click({
+        try {
+            $url = $this.Tag
+            $temp = Join-Path $env:TEMP ("deploy_" + [guid]::NewGuid() + ".ps1")
+            Invoke-WebRequest $url -OutFile $temp
+
+            Start-Process powershell.exe `
+                -ArgumentList "-ExecutionPolicy Bypass -File `"$temp`"" `
+                -WindowStyle Normal
+
+        }
+        catch {
+            [System.Windows.Forms.MessageBox]::Show($_.Exception.Message)
+        }
+    })
+
+    $form.Controls.Add($button)
     $y += 50
 }
 

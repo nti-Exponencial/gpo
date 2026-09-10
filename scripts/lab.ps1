@@ -79,6 +79,36 @@ New-ItemProperty `
     -Value "hide:regionlanguage;language;keyboard;screenrotation" `
     -Force
 
+$targets = @(
+    "HKLM:\SOFTWARE\Classes\Directory\Background\shell",
+    "HKLM:\SOFTWARE\Classes\Directory\Background\shellex\ContextMenuHandlers",
+    "HKLM:\SOFTWARE\Classes\DesktopBackground\Shell"
+)
+
+foreach ($path in $targets) {
+    if (-not (Test-Path $path)) {
+        continue
+    }
+
+    Get-ChildItem $path -ErrorAction SilentlyContinue | ForEach-Object {
+        $keyName = $_.PSChildName
+        $keyPath = $_.PSPath
+        $properties = Get-ItemProperty $keyPath -ErrorAction SilentlyContinue
+        $text = "$keyName $($properties.DisplayName) $($properties.MUIVerb) $($properties.Command)"
+
+        if ($text -match '(?i)Intel.*Graphics|Graphics.*Intel|igfx|IntelGFX|Intel Graphics') {
+            $backup = Join-Path $env:TEMP "IntelGraphics_ContextMenu_Backup.reg"
+
+            reg.exe export $_.Name $backup /y 2>$null
+
+            $newName = "${keyName}_Disabled"
+            Rename-Item -Path $keyPath -NewName $newName -ErrorAction SilentlyContinue
+            Write-Host "Ocultada: $keyName" -ForegroundColor Green
+        }
+    }
+}
+
+Stop-Process -Name explorer -Force -ErrorAction SilentlyContinue
 [gc]::Collect()
 [gc]::WaitForPendingFinalizers()
 reg unload HKU\TempHive
