@@ -80,9 +80,9 @@ New-ItemProperty `
     -Force
 
 $targets = @(
-    "HKU:\TempHive\SOFTWARE\Classes\Directory\Background\shell",
-    "HKU:\TempHive\SOFTWARE\Classes\Directory\Background\shellex\ContextMenuHandlers",
-    "HKU:\TempHive\SOFTWARE\Classes\DesktopBackground\Shell"
+    "HKLM:\SOFTWARE\Classes\Directory\Background\shell",
+    "HKLM:\SOFTWARE\Classes\Directory\Background\shellex\ContextMenuHandlers",
+    "HKLM:\SOFTWARE\Classes\DesktopBackground\Shell"
 )
 
 foreach ($path in $targets) {
