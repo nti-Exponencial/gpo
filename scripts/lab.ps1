@@ -90,17 +90,7 @@ foreach ($path in $targets) {
         continue
     }
 
-    Get-ChildItem $path -ErrorAction SilentlyContinue | ForEach-Object {
-        Write-Host "`nKEY: $($_.PSChildName)" -ForegroundColor Yellow
-
-        $props = Get-ItemProperty $_.PSPath -ErrorAction SilentlyContinue
-
-        $props.PSObject.Properties |
-            Where-Object { $_.Name -notmatch '^PS' } |
-            ForEach-Object {
-                Write-Host "  $($_.Name) = $($_.Value)"
-            }
-        
+    Get-ChildItem $path -ErrorAction SilentlyContinue | ForEach-Object {       
         $keyName = $_.PSChildName
         $keyPath = $_.PSPath
         $properties = Get-ItemProperty $keyPath -ErrorAction SilentlyContinue
