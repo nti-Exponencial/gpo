@@ -1,5 +1,4 @@
-$Url = "nti-exponencial.github.io/gpo/"
-
+$url = "nti-exponencial.github.io/gpo"
 # $isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
 
@@ -7,13 +6,13 @@ Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
 $Scripts = @(
-    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab.ps1" }
-    @{ Name = "Lab. Informatica | Professor(a)"; Url = "nti-exponencial.github.io/gpo/scripts/lab2.ps1" }
-    @{ Name = "Salas de Aula"; Url = "nti-exponencial.github.io/gpo/scripts/classroom.ps1" }
-    @{ Name = "Wallpapers"; Url = "nti-exponencial.github.io/gpo/scripts/wallpaper.ps1" }
+    @{ Name = "Lab. Informatica | Aluno(a)"; Url = "$url/gpo/scripts/lab.ps1" }
+    @{ Name = "Lab. Informatica | Professor(a)"; Url = "$url/scripts/lab2.ps1" }
+    @{ Name = "Salas de Aula"; Url = "$url/scripts/classroom.ps1" }
+    @{ Name = "Wallpapers"; Url = "$url/scripts/wallpaper.ps1" }
 )
 $Rollbacks = @(
-    @{ Name = "Rollback | Salas de Aula"; Url = $Url + "/scripts/rollback/rev_classroom.ps1"}
+    @{ Name = "Rollback | Salas de Aula"; Url = "$url/scripts/rollback/rev_classroom.ps1"}
 )
 
 $form = New-Object System.Windows.Forms.Form
