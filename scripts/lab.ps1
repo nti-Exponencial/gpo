@@ -111,9 +111,8 @@ foreach ($path in $targets) {
 
             reg.exe export $_.Name $backup /y 2>$null
 
-            $newName = "${keyName}_Disabled"
-            Rename-Item -Path $keyPath -NewName $newName -ErrorAction SilentlyContinue
-            Write-Host "Ocultada: $keyName" -ForegroundColor Green
+            Remove-Item -Path $keyPath -Recurse -Force -ErrorAction SilentlyContinue
+            Write-Host "Removed: $keyName" -ForegroundColor Green
         }
     }
 }
